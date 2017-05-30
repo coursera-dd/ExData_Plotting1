@@ -19,7 +19,7 @@ pwdata <- subset(pwdata, Date>=as.Date("2007-02-01") & Date<=as.Date("2007-02-02
 
 timevals <- strptime(paste(pwdata$Date, pwdata$Time, sep = ' '), format= '%Y-%m-%d %H:%M:%S');
 
-# first plot
+# second plot
 png("plot2.png", width=480, height=480);
 plot(timevals, pwdata$Global_active_power, 
      ylab = "Global Active Power (kilowatts)",
