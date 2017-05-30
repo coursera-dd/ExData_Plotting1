@@ -1,0 +1,22 @@
+if (!file.exists("coursera-dd-downloaded-data.zip") 
+      && !file.exists("household_power_consumption.txt")) {
+  download.file('https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip',
+                destfile="coursera-dd-downloaded-data.zip");
+  unzip("coursera-dd-downloaded-data.zip");
+}
+
+# read the data. Reads entire file - not very efficient
+
+pwdata <- read.table("household_power_consumption.txt", header = TRUE, 
+                   sep=";", stringsAsFactors = FALSE, dec = ".", na.strings="?",
+                   colClasses = c("character", "character", "double",
+                                  "double", "double", "double", "double",
+                                  "double", "double"));
+
+# pwdata$Date <- strptime(pwdata$Date, "%d/%m/%Y");
+
+pwdata$Date <- as.Date(pwdata$Date, format="%d/%m/%Y");
+pwdata <- subset(pwdata, Date>=as.Date("2007-02-01") & Date<=as.Date("2007-02-02"))
+
+# head(pwdata);
+# str(pwdata)
