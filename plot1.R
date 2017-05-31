@@ -1,4 +1,3 @@
-# source("downloadData.R");
 if (!file.exists("coursera-dd-downloaded-data.zip") 
     && !file.exists("household_power_consumption.txt")) {
   download.file('https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip',
